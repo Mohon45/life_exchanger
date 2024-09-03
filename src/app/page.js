@@ -36,7 +36,8 @@ export default function Home() {
 	};
 
 	const handleSuggestionClick = (game) => {
-		setSelectedGame(game);
+		console.log(game);
+		// setSelectedGame(game);
 		setSearchValue("");
 		setSuggestions([]);
 	};
