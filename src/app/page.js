@@ -36,8 +36,20 @@ export default function Home() {
 	};
 
 	const handleSuggestionClick = (game) => {
-		console.log(game);
-		// setSelectedGame(game);
+		if (Array.isArray(game?.matches?.match)) {
+			const customData = {
+				gid: game.gid,
+				id: game.id,
+				name: game.name,
+
+				matches: {
+					match: game?.matches?.match?.[0],
+				},
+			};
+			setSelectedGame(customData);
+		} else {
+			setSelectedGame(game);
+		}
 		setSearchValue("");
 		setSuggestions([]);
 	};
@@ -48,7 +60,7 @@ export default function Home() {
 				<input
 					type="text"
 					name=""
-					id=""
+					value={searchValue}
 					placeholder="search game by id"
 					className="bg-transparent outline outline-1 w-full rounded-[5px] py-2 px-4 focus:outline-white"
 					onChange={searchHandler}
